@@ -30,7 +30,7 @@ Supabase (PostgreSQL) / Database Project: Portfolio Generator
 
 No passwords, API secret keys, or private credentials are stored in this project. The published site uses the public anon key, which is set in the hosting environment and is not written in the repository.
 
-The SQL for the tables is in `supabase/migrations/0001_init.sql`. The profile-picture bucket is in `supabase/storage.sql`.
+Paste `supabase/setup_all.sql` once in the Supabase SQL Editor. It creates the tables and the profile-picture bucket. The same SQL is also split into `supabase/migrations/0001_init.sql` and `supabase/storage.sql`.
 
 This assignment has no login. Row Level Security is turned on for every table, and the policies allow the anon role to add, read, update, and delete portfolio data so the instructor can test the site. The templates table is read-only. This is a class-project tradeoff, not a setup for a real public product.
 

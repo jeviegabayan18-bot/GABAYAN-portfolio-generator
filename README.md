@@ -34,6 +34,7 @@ Other commands:
 npm run build
 npm run lint
 npm run preview
+npm run db:check
 ```
 
 ## Demo mode
@@ -60,7 +61,7 @@ The banner hides itself when the real database is configured. No code change is 
 
 `src/data/local.ts` is the temporary browser fallback. `src/data/supabase.ts` talks to Supabase. `src/data/index.ts` picks Supabase when both env vars are real values, and localStorage otherwise.
 
-Column names in the Supabase code match `supabase/migrations/0001_init.sql`.
+Column names in the Supabase code match `supabase/migrations/0001_init.sql`. The client is `@supabase/supabase-js` 2.117 or newer, which accepts the current publishable key (`sb_publishable_...`) and the older anon JWT. Nothing in this app requires the key to look like a JWT. A secret key (`sb_secret_...`) is rejected.
 
 ## Connect the online database
 
@@ -69,25 +70,24 @@ The database is not connected in this repository. There are no keys in the code.
 1. Create a free account at [supabase.com](https://supabase.com).
 2. Create a new project. A good name is **Portfolio Generator**.
 3. Wait until the project finishes starting.
-4. Open **SQL Editor** and run the full file `supabase/migrations/0001_init.sql`. It creates the tables, the three template rows, row level security, and the anon policies.
-5. In the same SQL Editor, run `supabase/storage.sql`. This creates the public `profile-pictures` bucket (2 MB, image types only) and the storage policies.
-6. Optional: run `supabase/seed.sql` to insert one sample portfolio.
-7. Open **Storage** and confirm the `profile-pictures` bucket exists and is public.
-8. Open **Project Settings → API**. Copy the **Project URL** and the **anon public** key. Do not copy the service-role key. That key must never go in this website.
-9. Deploy the site on Vercel (steps below) if you have not yet.
-10. In the Vercel project, open **Settings → Environment Variables**. Add these for **Production** and **Preview**:
+4. Open **SQL Editor**. Paste the entire file `supabase/setup_all.sql` and run it. That one file creates the tables, the three template rows, row level security, and the public `profile-pictures` bucket (2 MB, image types only). It is safe to run again. The same SQL is also split into `supabase/migrations/0001_init.sql` and `supabase/storage.sql` if you want two smaller pastes.
+5. Optional: run `supabase/seed.sql` to insert one sample portfolio.
+6. Open **Storage** and confirm the `profile-pictures` bucket exists and is public.
+7. Open **Project Settings → API Keys**. Copy the **Project URL** and the **publishable** key. It looks like `sb_publishable_...`. An older project may show a long anon JWT instead; that also works. Do not copy the secret key (`sb_secret_...`) or the service-role key.
+8. Deploy the site on Vercel (steps below) if you have not yet.
+9. In the Vercel project, open **Settings → Environment Variables**. Add these for **Production** and **Preview**:
     - `VITE_SUPABASE_URL` = the Project URL
-    - `VITE_SUPABASE_ANON_KEY` = the anon public key
+    - `VITE_SUPABASE_ANON_KEY` = the publishable key (or the legacy anon JWT)
     - `VITE_SUPABASE_BUCKET` = `profile-pictures` (optional, this is the default)
-11. Redeploy the site. Vite reads these variables at build time, so a new deployment is required.
-12. Open the published site. The yellow demo banner should be gone.
-13. Create a portfolio, then in Supabase open **Table Editor**. You should see a row in `portfolios` and matching rows in the child tables. The photo should appear in the `profile-pictures` bucket.
+10. Redeploy the site. Vite reads these variables at build time, so a new deployment is required.
+11. Open the published site. The yellow demo banner should be gone.
+12. Create a portfolio, then in Supabase open **Table Editor**. You should see a row in `portfolios` and matching rows in the child tables. The photo should appear in the `profile-pictures` bucket.
 
-To try Supabase on your own computer first, copy `.env.example` to `.env.local`, fill in the same two values, and restart `npm run dev`.
+To try Supabase on your own computer first, copy `.env.example` to `.env.local`, fill in the same two values, and restart `npm run dev`. `.env.local` is git-ignored. Then run `npm run db:check`. Every line should say PASS. If the SQL has not been run yet, the check stops and tells you to paste `supabase/setup_all.sql`. It deletes its own test row when the schema is present.
 
 ### Security note
 
-This assignment has no login. The SQL policies allow the anon key to read and write portfolio rows so the instructor can test the site without an account. That is fine for this class project. It is not how a public product should protect user data. Do not put the service-role key in Vercel or in any `VITE_` variable. Those values are visible in the browser.
+This assignment has no login. The SQL policies allow the publishable (anon) key to read and write portfolio rows so the instructor can test the site without an account. That is fine for this class project. It is not how a public product should protect user data. Do not put the secret key or the service-role key in Vercel or in any `VITE_` variable. `VITE_` values are visible in the browser.
 
 ## Deploy on Vercel
 
@@ -104,8 +104,10 @@ This assignment has no login. The SQL policies allow the anon key to read and wr
 
 | Path | What it is |
 | --- | --- |
+| `supabase/setup_all.sql` | One paste for tables, policies, and the storage bucket |
 | `supabase/migrations/0001_init.sql` | Tables, constraints, template seed, RLS |
 | `supabase/storage.sql` | `profile-pictures` bucket and storage policies |
+| `scripts/db-check.mjs` | Live PASS/FAIL check (`npm run db:check`) |
 | `supabase/seed.sql` | Optional sample portfolio |
 | `src/data/` | The shared data interface and both implementations |
 | `src/pages/` | Home, form, templates, preview, manage, 404 |
@@ -119,3 +121,4 @@ This assignment has no login. The SQL policies allow the anon key to read and wr
 - `npm run build` — typecheck and production build
 - `npm run lint` — oxlint
 - `npm run preview` — serve the production build
+- `npm run db:check` — test the live Supabase project (needs env vars; no secrets are printed)

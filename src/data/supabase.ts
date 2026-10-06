@@ -24,8 +24,16 @@ const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY?.trim() ?? ''
 
 export const PROFILE_BUCKET = import.meta.env.VITE_SUPABASE_BUCKET?.trim() || 'profile-pictures'
 
+/**
+ * True when a public Supabase key is configured.
+ * Accepts the current publishable key (`sb_publishable_...`) and the older anon JWT.
+ * The shape is not checked: supabase-js 2.117+ sends publishable keys in the
+ * `apikey` header and does not treat them as Bearer tokens.
+ * A secret key (`sb_secret_...`) is rejected so it is never shipped to the browser.
+ */
 export function isSupabaseConfigured(): boolean {
   if (!url || !anonKey) return false
+  if (anonKey.startsWith('sb_secret_')) return false
   if (/your-project/i.test(url) || /your-anon|your-key|placeholder/i.test(anonKey)) return false
   try {
     const parsed = new URL(url)
@@ -33,6 +41,12 @@ export function isSupabaseConfigured(): boolean {
   } catch {
     return false
   }
+}
+
+if (anonKey.startsWith('sb_secret_')) {
+  console.error(
+    'VITE_SUPABASE_ANON_KEY is a secret key. Use the publishable key (sb_publishable_...) instead. Staying in demo mode.',
+  )
 }
 
 interface JoinedPortfolio {
