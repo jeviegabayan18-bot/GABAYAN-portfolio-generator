@@ -26,7 +26,7 @@ Until the online database is connected, the site runs in demo mode and keeps dat
 
 ## Database Platform
 
-Supabase (PostgreSQL) / Database Project: Portfolio Generator
+Supabase (PostgreSQL + Storage) / Database Project: Portfolio Generator
 
 No passwords, API secret keys, or private credentials are stored in this project. The published site uses the public anon key, which is set in the hosting environment and is not written in the repository.
 
@@ -237,7 +237,7 @@ Empty sections are hidden on all three templates.
 
 ## Screenshots of the System
 
-These screenshots were taken in demo mode, so the yellow database banner is visible. After Supabase is connected and the site is redeployed, that banner is hidden.
+These screenshots are from the published site. The yellow demo banner is hidden because the online database is connected. The person shown is fictional sample data.
 
 ![Home page](screenshots/01-home.png)
 
@@ -261,6 +261,23 @@ These screenshots were taken in demo mode, so the yellow database banner is visi
 
 ## Published Website URL
 
-`https://<your-project>.vercel.app`
+https://portfolio-generator-gray.vercel.app
 
-Replace this with the real Vercel URL after deployment.
+## How to test
+
+Use the published site. No account is required.
+
+1. Open the home page and confirm **Create Portfolio** and **Manage portfolios** are shown, with no yellow demo banner.
+2. Open **Create Portfolio**. Leave the name blank and try to save. The form should ask for a full name and an email.
+3. Enter a name, email, contact number, address, and about text. Attach a JPG, PNG, WEBP, or GIF under 2 MB and confirm the preview appears.
+4. Add at least one education entry, one skill, one project, one experience entry, and one link.
+5. Choose **Save and choose a template**. The template page should open and say the portfolio was saved.
+6. Select **Simple**, **Modern**, or **Creative**, then choose **Generate Portfolio**. The preview should show the information you entered.
+7. On the preview, switch to each of the other two templates and confirm the same information appears in the new layout.
+8. Choose **Edit**, change a field, and save. Generate or return to the preview and confirm the change is there.
+9. Open **Manage**. The portfolio should be listed with the name, email, and template. **View**, **Edit**, and **Change template** should open the right page.
+10. Choose **Delete**, confirm, and check that the portfolio disappears from Manage. Create it again if you still need it for the database check below.
+
+## Verify it's stored in the online database
+
+After step 5 or step 6, before you delete the portfolio, open the Supabase project **Portfolio Generator** and go to **Table Editor**. You should see a row in `portfolios`, plus matching rows in `education`, `skills`, `projects`, `work_experience`, and `social_links`. The profile picture should be in the `profile-pictures` storage bucket. Deleting the portfolio from Manage removes those rows and the stored photo. No API keys are in this repository; the published site already has the public key configured in Vercel.

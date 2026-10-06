@@ -2,6 +2,8 @@
 
 A small website for a first-year BSCS assignment. You enter your information, save it, choose one of three portfolio templates, and preview the page. You can edit or delete a portfolio later.
 
+Published site: https://portfolio-generator-gray.vercel.app
+
 ## Features
 
 - Home, portfolio form (create and edit), template selection, preview, and manage pages
@@ -98,7 +100,7 @@ This assignment has no login. The SQL policies allow the publishable (anon) key 
 5. Output directory: `dist`.
 6. Add the environment variables from the section above if the database is ready. You can deploy once without them (demo mode) and add them later, then redeploy.
 7. Deploy. `vercel.json` sends all routes to `index.html` so refreshing a page like `/portfolio/some-id` still opens the app.
-8. Visit the URL Vercel gives you, for example `https://your-project.vercel.app`.
+8. Visit the published site: https://portfolio-generator-gray.vercel.app
 
 ## Project files
 
