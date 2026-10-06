@@ -1,5 +1,6 @@
 -- Profile picture storage for Portfolio Generator.
--- Run this in the Supabase SQL Editor AFTER supabase/migrations/0001_init.sql.
+-- Prefer one paste: supabase/setup_all.sql (this section is already included there).
+-- If you run files separately, run this AFTER supabase/migrations/0001_init.sql.
 -- Safe to run more than once.
 --
 -- The website uploads images to the public bucket "profile-pictures"
@@ -67,3 +68,7 @@ create policy profile_pictures_anon_delete
   for delete
   to anon
   using (bucket_id = 'profile-pictures');
+
+-- Policies do not grant table privileges by themselves.
+grant select on storage.buckets to anon;
+grant select, insert, update, delete on storage.objects to anon;

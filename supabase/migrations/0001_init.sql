@@ -4,7 +4,8 @@
 -- It is safe to run again: tables are created only if they are missing, and policies
 -- are dropped and recreated. It does not delete existing portfolio rows.
 --
--- After this file, run supabase/storage.sql so profile pictures have a bucket.
+-- Prefer one paste: supabase/setup_all.sql (tables and storage together).
+-- Or run this file, then supabase/storage.sql, for the profile-pictures bucket.
 -- Optional sample row: supabase/seed.sql.
 --
 -- SECURITY TRADEOFF (please read):
