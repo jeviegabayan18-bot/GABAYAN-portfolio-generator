@@ -1,0 +1,522 @@
+.folio {
+  color: #1c1917;
+}
+
+.pre {
+  white-space: pre-wrap;
+}
+
+.folio-simple {
+  max-width: 760px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 48px 44px 64px;
+  border-top: 8px solid #1e3a5f;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+}
+
+.folio-simple h1,
+.folio-simple h2,
+.folio-simple h3 {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-weight: 650;
+}
+
+.folio-simple h1 {
+  font-size: clamp(2.2rem, 4vw, 3.1rem);
+  color: #1e3a5f;
+  letter-spacing: -0.03em;
+}
+
+.simple-header {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.simple-portrait {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  background: #f5f5f4;
+  color: #1e3a5f;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 1.8rem;
+}
+
+.simple-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-top: 8px;
+  color: #57534e;
+}
+
+.simple-contact a {
+  color: #1e3a8a;
+}
+
+.simple-section {
+  margin-top: 28px;
+}
+
+.simple-section h2 {
+  font-size: 1.35rem;
+  border-bottom: 1px solid #e7e5e4;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+}
+
+.simple-item {
+  margin-bottom: 16px;
+}
+
+.simple-item h3 {
+  font-size: 1.08rem;
+}
+
+.simple-item-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.simple-item-top span,
+.simple-meta,
+.simple-at {
+  color: #78716c;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 400;
+}
+
+.simple-skills,
+.simple-links {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.simple-skills li,
+.simple-links li {
+  margin: 4px 0;
+}
+
+.folio-modern {
+  max-width: 980px;
+  margin: 0 auto;
+  background: #f8fafc;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+  font-family: Manrope, "Segoe UI", sans-serif;
+}
+
+.folio-modern h1,
+.folio-modern h2,
+.folio-modern h3 {
+  font-family: Manrope, sans-serif;
+}
+
+.modern-hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  padding: 36px;
+  background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 55%, #0f766e 100%);
+  color: white;
+}
+
+.modern-portrait {
+  width: 128px;
+  height: 128px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.16);
+  color: white;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.85);
+  font-size: 2rem;
+}
+
+.modern-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  opacity: 0.8;
+  margin-bottom: 6px;
+}
+
+.modern-hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.03em;
+}
+
+.modern-about {
+  margin-top: 10px;
+  max-width: 62ch;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.modern-contact {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.modern-contact li,
+.modern-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.modern-hero a {
+  color: white;
+}
+
+.modern-body {
+  padding: 26px;
+  display: grid;
+  gap: 22px;
+}
+
+.modern-block h2 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.modern-skills,
+.modern-project-grid,
+.modern-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.modern-skills,
+.modern-project-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.modern-skills {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modern-card {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.modern-skill-top,
+.modern-split {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.modern-skill-top span,
+.modern-split span,
+.modern-company {
+  color: #64748b;
+  font-size: 0.92rem;
+}
+
+.skill-bar,
+.creative-meter {
+  margin-top: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.skill-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #1d4ed8, #0f766e);
+}
+
+.modern-project h3,
+.modern-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+.chips li,
+.modern-links a {
+  background: #e0f2fe;
+  color: #0c4a6e;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.modern-link {
+  margin-top: 10px;
+  font-weight: 700;
+  color: #1d4ed8;
+  text-decoration: none;
+}
+
+.folio-creative {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  background: #fff7ed;
+  border-radius: 28px;
+  overflow: hidden;
+  font-family: Nunito, "Segoe UI", sans-serif;
+  min-height: 640px;
+}
+
+.folio-creative h1,
+.creative-about {
+  font-family: Fraunces, Georgia, serif;
+}
+
+.creative-aside {
+  background: linear-gradient(165deg, #3b0764 0%, #9d174d 58%, #c2410c 130%);
+  color: #fff7ed;
+  padding: 32px 22px;
+}
+
+.creative-portrait {
+  width: 124px;
+  height: 124px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
+  box-shadow: 0 0 0 4px #fbbf24;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.creative-aside h1 {
+  font-size: 2.3rem;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.creative-contact,
+.creative-skills ul,
+.creative-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+}
+
+.creative-contact li,
+.creative-aside a {
+  color: #fff7ed;
+}
+
+.creative-aside h2 {
+  font-family: Nunito, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 22px 0 8px;
+}
+
+.creative-skill-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.creative-meter {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.creative-meter span {
+  display: block;
+  height: 100%;
+  background: #fbbf24;
+}
+
+.creative-links a {
+  display: inline-block;
+  margin-top: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  padding: 4px 10px;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.creative-main {
+  padding: 36px 32px 48px;
+  display: grid;
+  gap: 28px;
+  align-content: start;
+}
+
+.creative-about {
+  margin: 0;
+  font-size: 1.45rem;
+  line-height: 1.35;
+  color: #7c2d12;
+}
+
+.creative-main h2 {
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.7rem;
+  margin-bottom: 12px;
+  color: #9a3412;
+}
+
+.timeline {
+  border-left: 3px solid #fb923c;
+  margin-left: 8px;
+  display: grid;
+  gap: 18px;
+}
+
+.timeline article {
+  position: relative;
+  padding-left: 18px;
+}
+
+.timeline article::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 6px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #c2410c;
+  box-shadow: 0 0 0 4px #ffedd5;
+}
+
+.creative-when,
+.creative-year,
+.creative-where,
+.creative-tech {
+  color: #9a3412;
+  font-weight: 800;
+  font-size: 0.92rem;
+}
+
+.creative-projects,
+.creative-schools {
+  display: grid;
+  gap: 14px;
+}
+
+.creative-project,
+.creative-schools article {
+  background: white;
+  border-radius: 18px 18px 18px 4px;
+  padding: 16px 16px 16px 18px;
+  box-shadow: 6px 6px 0 #fdba74;
+}
+
+.creative-project h3,
+.creative-schools h3,
+.timeline h3 {
+  font-family: Nunito, sans-serif;
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+.creative-project a {
+  display: inline-block;
+  margin-top: 8px;
+  font-weight: 800;
+  color: #9a3412;
+}
+
+@media (max-width: 800px) {
+  .folio-simple {
+    padding: 28px 18px 40px;
+  }
+
+  .simple-header,
+  .modern-hero,
+  .simple-item-top {
+    display: grid;
+    justify-items: start;
+  }
+
+  .modern-hero,
+  .modern-body,
+  .creative-main {
+    padding: 22px 16px;
+  }
+
+  .folio-modern,
+  .folio-creative {
+    border-radius: 0;
+  }
+
+  .folio-creative {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  body,
+  .app-shell,
+  .preview-stage {
+    background: white !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .preview-stage {
+    padding: 0;
+  }
+
+  .folio-simple,
+  .folio-modern,
+  .folio-creative {
+    box-shadow: none;
+    max-width: none;
+    border-radius: 0;
+  }
+
+  .folio-creative {
+    display: block;
+  }
+
+  .creative-aside,
+  .modern-hero,
+  .folio-modern,
+  .folio-creative,
+  .skill-bar span,
+  .creative-meter span {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .simple-section,
+  .modern-card,
+  .creative-project,
+  .timeline article {
+    break-inside: avoid;
+  }
+}
